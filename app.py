@@ -255,5 +255,9 @@ app.mount("/", StaticFiles(directory=str(STATIC_DIR), html=True), name="static")
 if __name__ == "__main__":
     import uvicorn
     print("\nStarting Acme Corp HR Support Portal at http://localhost:8000")
-    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=False)
-
+    uvicorn.run(
+    "app:app",
+    host="0.0.0.0",
+    port=int(os.environ.get("PORT", 8000)),
+    reload=False
+)
